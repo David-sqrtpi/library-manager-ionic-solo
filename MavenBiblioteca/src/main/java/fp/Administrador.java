@@ -1,5 +1,14 @@
 package fp;
 
+import com.google.api.core.ApiFuture;
+import com.google.cloud.firestore.DocumentReference;
+import com.google.cloud.firestore.Firestore;
+import com.google.cloud.firestore.WriteResult;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ExecutionException;
+
 public class Administrador {
 
     private String nombre;
@@ -7,21 +16,51 @@ public class Administrador {
     private int edad;
     private String detalles;
     private String telefono;
+    private String correo;
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo, Firestore db) {
+        //Agrega datos a la BD
+        this.correo = correo;
+        DocumentReference docRef = db.collection("usuarios").document(correo);
+        // Add document data  with id "" using a hashmap
+    }
 
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre(String nombre, Firestore db) throws ExecutionException, InterruptedException {
+        //Agrega datos a la BD
+        DocumentReference docRef = db.collection("users").document(this.getCorreo());
+        // Add document data  with id "" using a hashmap
+        Map<String, Object> data = new HashMap<>();
+        data.put("nombre", nombre);
+        //asynchronously write data
+        ApiFuture<WriteResult> result = docRef.set(data);
+        // ...
+        // result.get() blocks on response
+        System.out.println("Update time : " + result.get().getUpdateTime());
     }
 
     public String getApellido() {
         return apellido;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setApellido(String apellido, Firestore db) throws ExecutionException, InterruptedException {
+        //Agrega datos a la BD
+        DocumentReference docRef = db.collection("users").document(this.getCorreo());
+        // Add document data  with id "" using a hashmap
+        Map<String, Object> data = new HashMap<>();
+        docRef.update("apellido", apellido);
+        //asynchronously write data
+        //ApiFuture<WriteResult> result = docRef.set(data);
+        // ...
+        // result.get() blocks on response
+        //System.out.println("Update time : " + result.get().getUpdateTime());
     }
 
     public int getEdad() {
