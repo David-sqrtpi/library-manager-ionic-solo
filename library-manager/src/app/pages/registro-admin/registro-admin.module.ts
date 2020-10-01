@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { NuevoadminPageRoutingModule } from './nuevoadmin-routing.module';
+import { RegistroAdminPageRoutingModule } from './registro-admin-routing.module';
 
-import { NuevoadminPage } from './nuevoadmin.page';
+import { RegistroAdminPage } from './registro-admin.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    NuevoadminPageRoutingModule
+    RegistroAdminPageRoutingModule
   ],
-  declarations: [NuevoadminPage]
+  declarations: [RegistroAdminPage]
 })
-export class NuevoadminPageModule {}
+export class RegistroAdminPageModule {}

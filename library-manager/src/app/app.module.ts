@@ -14,12 +14,21 @@ import { firebaseConfig } from 'src/environments/environment';
 import { AngularFireModule } from "@angular/fire";
 
 import { AngularFireAuthModule } from "@angular/fire/auth";
+
+import { HttpClientModule } from '@angular/common/http';
  
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, AngularFireModule.initializeApp(firebaseConfig), AngularFireAuthModule],
+  imports: [
+    BrowserModule, 
+    IonicModule.forRoot(), 
+    AppRoutingModule, 
+    AngularFireModule.initializeApp(firebaseConfig), 
+    AngularFireAuthModule,
+    HttpClientModule
+  ],
   providers: [
     StatusBar,
     SplashScreen,

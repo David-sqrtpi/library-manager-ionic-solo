@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Library Manager</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <img class=icon src="https://www.educacionactiva.com/wp-content/uploads/2014/11/Bienvenido.png" alt="center">
+  <ion-button expand="full" size="large" color="danger" (click)="test()">Lector</ion-button>
+  <ion-button expand="full" size="large" color="success" routerLink="/registro-admin">Administrador</ion-button>
+  <ion-button expand="full" size="large" color="primary">Bibliotecario</ion-button>
+  <h1 >{{response | json}}</h1>
+</ion-content>

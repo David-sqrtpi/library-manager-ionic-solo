@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-
-import { AngularFireAuth } from "@angular/fire/auth";
+import { HttpClientModule } from '@angular/common/http'
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class HttpServiceService {
 
   constructor() { }
 }

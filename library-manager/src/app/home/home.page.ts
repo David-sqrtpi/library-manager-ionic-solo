@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient} from '@angular/common/http'
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,24 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
+
+  public objt: any = null;
+  public url: any = "https://jsonplaceholder.typicode.com/todos/1";
+
+  ngOnInit() {
+
+    this.consulta();
+
+  }
+
+  consulta(){
+
+    this.http.get(this.url).subscribe(
+      respuesta => this.objt = respuesta,
+      error=> console.log(error)
+    )
+
+  }
 
 }

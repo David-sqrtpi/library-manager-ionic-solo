@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-title style="text-align:center;">REGISTRO</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <img class=icon src="assets/icon/LibraryManager.jpeg" alt="center">
+  <ion-list>
+
+    <ion-item>
+      <ion-label stacked>Nombre</ion-label>
+      <ion-input type="text" expand="full" [(ngModel)]="Nombre" name="Nombre"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label stacked>Apellido</ion-label>
+      <ion-input type="text" expand="full" [(ngModel)]="Apellido" name="Apellido"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Email</ion-label>
+      <ion-input type="email" expand="full" [(ngModel)]="Email" name="email"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label stacked>Contraseña</ion-label>
+      <ion-input  type="password" [(ngModel)]="Password" name="password"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label stacked>Edad</ion-label>
+      <ion-input  type="number" [(ngModel)]="Edad" name="number"></ion-input>
+    </ion-item>
+
+    <ion-button expand="full" size="large" color="success" (click)="sendRequest()" >
+      REGISTRARSE
+    </ion-button>
+  
+  </ion-list>
+
+</ion-content>

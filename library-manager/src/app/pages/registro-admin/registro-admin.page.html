@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-title style="text-align:center;">INICIO DE SESIÓN</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <img class=icon src="assets/icon/LibraryManager.jpeg" alt="center">
+  <ion-list>
+
+    <ion-item>
+      <ion-label stacked>Email</ion-label>
+      <ion-input type="text" expand="full" [(ngModel)]="email" name="email"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      
+      <ion-label stacked>Contraseña</ion-label>
+      <ion-input  type="password" [(ngModel)]="password" name="password"></ion-input>
+    </ion-item>
+    <ion-button expand="full" size="large" routerLink="/tabs/tab2" color="success" >
+      INICIAR SESIÓN
+    </ion-button>
+  
+  </ion-list>
+  <ion-text color="primary" style="text-align:end;" routerLink="/registro-admin2">
+    <p>Registrarse</p>
+  </ion-text>
+
+</ion-content>

@@ -61,6 +61,7 @@ public class Administrador {
         // ...
         // result.get() blocks on response
         //System.out.println("Update time : " + result.get().getUpdateTime());
+        //Hola estoy escribiendo esto mientras estoy en clase para ver como responde la pc y parece que este IDE es más condescendiente con mi querida PC
     }
 
     public int getEdad() {
