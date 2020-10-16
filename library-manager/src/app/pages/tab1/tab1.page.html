@@ -7,30 +7,38 @@
 </ion-header>
 
 <ion-content>
+  
+  <ion-button size="full" (click)="sendRequest()">OK</ion-button>
   <img class=icon src="https://image.freepik.com/vector-gratis/perfil-empresario-dibujos-animados_18591-58479.jpg" alt="center">
   
-  <ion-button expand="full" color="primary">
-    Nombre/s
-    <ion-input type="text"></ion-input>
-    </ion-button>
 
-  <ion-button expand="full" color="primary">
-      Apellido/s
-      <ion-input type="text"></ion-input>
-      </ion-button>
+  <ion-item color="success">
+    <ion-label position="floating">Nombre</ion-label>
+    <ion-input type="text" expand="full" [(ngModel)]="nombre" name="Nombre">{{something?.Nombre}}</ion-input>
+  </ion-item>
+  <h1></h1>
 
-  <ion-button expand="full" color="primary">
-        Contraseña
-        <ion-input type="text"></ion-input>
-        </ion-button>
+  <ion-item color="success">
+    <ion-label position="floating">Apellido</ion-label>
+    <ion-input type="text" expand="full" [(ngModel)]="apellido" name="Apellido">{{something?.Apellido}}</ion-input>
+  </ion-item>
+  <h1></h1>
 
-  <ion-button expand="full" color="primary">
-          Correo electrónico
-          <ion-input type="text"></ion-input>
-          </ion-button>
-          
-  <ion-button expand="full" color="primary">
-            Número telefónico
-            <ion-input type="text"></ion-input>
-            </ion-button>
-</ion-content>
+  <ion-item color="success">
+    <ion-label position="floating">Email</ion-label>
+    <ion-input type="text" expand="full" [(ngModel)]="email" name="email"></ion-input>
+  </ion-item>
+  <h1></h1>
+
+  <ion-item color="success">
+    <ion-label position="floating">Contraseña</ion-label>
+    <ion-input  type="password" [(ngModel)]="password" name="password">{{something?.Password}}</ion-input>
+  </ion-item>
+  <h1></h1>
+
+  <ion-item color="success">
+    <ion-label position="floating">Edad</ion-label>
+    <ion-input  type="number" [(ngModel)]="edad" name="number">{{something?.number}}</ion-input>
+  </ion-item>
+  <h1></h1>
+</ion-content >

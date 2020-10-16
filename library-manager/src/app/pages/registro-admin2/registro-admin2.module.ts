@@ -16,7 +16,7 @@ import { RegistroAdmin2Page } from './registro-admin2.page';
     FormsModule,
     IonicModule,
     RegistroAdmin2PageRoutingModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   declarations: [RegistroAdmin2Page]
 })

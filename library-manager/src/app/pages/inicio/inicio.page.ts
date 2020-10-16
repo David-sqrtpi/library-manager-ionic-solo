@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http'
 })
 export class InicioPage implements OnInit {
 
-private url: string = "http://localhost:8080/BibliotecaAPI-1.0-SNAPSHOT/api/parametro";
+private url: string = "http://localhost:8080/BibliotecaAPI-1.0-SNAPSHOT/api/new-admin";
 response: any = null;
 
   constructor(private http: HttpClient) { }
@@ -25,7 +25,7 @@ response: any = null;
       },
       error => console.log(error),
       () => console.log("Finished")
-    )
+    );
 
   }
 
