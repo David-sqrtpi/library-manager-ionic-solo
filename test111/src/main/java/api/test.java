@@ -2,22 +2,27 @@ package api;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
+import java.util.concurrent.ExecutionException;
 
-@Path("/test")
+@Path("/validation")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class test {
 
     @POST
-    public Response createAdmin(String json) {
-
-        System.out.println(json);
+    public Response validator(String emailJson) throws ExecutionException, InterruptedException {
 
         CloudFirestoreDatabase cloudFirestoreDatabase = new CloudFirestoreDatabase();
 
-        cloudFirestoreDatabase.test(json);
+        System.out.println(emailJson);
 
-        return Response.ok().build();
+        if (cloudFirestoreDatabase.validation(emailJson)) {
+            return Response.ok().build();
+        } else {
+
+            return Response.ok("\"error\"").build();
+
+        }
 
     }
 

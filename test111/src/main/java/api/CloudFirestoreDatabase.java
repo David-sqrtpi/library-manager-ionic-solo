@@ -1,70 +1,61 @@
 package api;
 
 import com.google.api.core.ApiFuture;
-import com.google.cloud.firestore.DocumentReference;
-import com.google.cloud.firestore.DocumentSnapshot;
-import com.google.cloud.firestore.Firestore;
+import com.google.cloud.firestore.*;
 import com.google.firebase.cloud.FirestoreClient;
 import com.google.gson.Gson;
+import entity.Usuario;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
-public class CloudFirestoreDatabase implements Database{
+public class CloudFirestoreDatabase extends DatabaseService {
 
     public Firestore db = FirestoreClient.getFirestore();
 
     Gson gson = new Gson();
 
+    @Override
     public void saveUser(String json) {
 
-        DocumentReference docRef = db.collection("usersFinal").document();
+        Usuario usuario = gson.fromJson(json, Usuario.class);
 
-        Map<String, Object> data = new HashMap<>();
+        System.out.println(usuario.getEmail());
+        System.out.println(usuario.getApellido());
 
-        data = (Map<String, Object>) gson.fromJson(json, data.getClass());
+        DocumentReference docRef = db.collection("usersFinal").document(usuario.getEmail());
 
-        docRef.set(data);
-        
+        docRef.set(usuario);
+
     }
 
+    @Override
     public String getUser(String email) throws ExecutionException, InterruptedException {
 
         DocumentReference docRef = db.collection("usersFinal").document(email);
-
         ApiFuture<DocumentSnapshot> future = docRef.get();
-
         DocumentSnapshot document = future.get();
 
-        String test = gson.toJson(document.getData());
-
-        return test;
+        return gson.toJson(document.getData());
 
     }
 
+    @Override
     public void updateUser(String email) {
 
-
-
     }
 
-    public void test(String json){
+    @Override
+    public boolean validation(String emailJson) throws ExecutionException, InterruptedException {
 
-        DocumentReference docRef = db.collection("usersFinal").document();
+        Usuario usuario = gson.fromJson(emailJson, Usuario.class);
 
-        Map<String, Object> data = new HashMap<>();
+        System.out.println(usuario.getEmail());
 
-        data = (Map<String, Object>) gson.fromJson(json, data.getClass());
+        DocumentReference docRef = db.collection("usersFinal").document(usuario.getEmail());
+        ApiFuture<DocumentSnapshot> future = docRef.get();
+        DocumentSnapshot document = future.get();
 
-        docRef.set(data);
-
-    }
-
-    public String getId(Map data){
-
-        return data.toString();
+        return document.exists();
 
     }
-
 }

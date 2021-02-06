@@ -12,7 +12,7 @@ public class config extends Application {
 
     public config() throws IOException {
 
-        try{
+        try {
             FileInputStream serviceAccount =
                     new FileInputStream("C:\\Users\\David\\Downloads\\base-de-datos-a789d-firebase-adminsdk-9u2xv-b9b8ba5993.json");
 
@@ -22,13 +22,11 @@ public class config extends Application {
                     .build();
 
             FirebaseApp.initializeApp(options);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
 
             System.out.println("continue");
 
         }
-
 
 
     }

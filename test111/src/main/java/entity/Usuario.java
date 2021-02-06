@@ -5,7 +5,7 @@ public class Usuario {
     private String nombre;
     private String apellido;
     private String email;
-    private String contrasena;
+    private String password;
     private int edad;
     private String rol;
 
@@ -42,11 +42,11 @@ public class Usuario {
     }
 
     public String getContrasena() {
-        return contrasena;
+        return password;
     }
 
     public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
+        this.password = contrasena;
     }
 
     public String getRol() {
