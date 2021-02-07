@@ -4,8 +4,8 @@ import com.google.cloud.firestore.DocumentReference;
 
 public class CloudFirestore implements Database{
     @Override
-    public void create(String collection, Object payload) {
-        DocumentReference docRef = db.collection("library").document();
+    public static void create(String collection, Object payload) {
+        DocumentReference docRef = db.collection(collection).document();
 
         docRef.set(payload);
     }

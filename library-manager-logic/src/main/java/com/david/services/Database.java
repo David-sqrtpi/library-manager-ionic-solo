@@ -7,7 +7,10 @@ public interface Database {
 
     Firestore db = FirestoreClient.getFirestore();
 
-    void create(String collection, Object payload);
+    static void create(String collection, Object payload) {
+
+    }
+
     void get();
     void getAll();
     void update();
