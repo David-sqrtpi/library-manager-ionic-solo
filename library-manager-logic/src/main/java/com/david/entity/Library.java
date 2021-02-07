@@ -2,19 +2,19 @@ package com.david.entity;
 
 public class Library {
     private final String name;
-    private final String employees;
+    private final String email;
 
-    public Library(String name, String employees) {
+    public Library(String name, String email) {
         this.name = name;
-        this.employees = employees;
+        this.email = email;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getEmployees() {
-        return employees;
+    public String getEmail() {
+        return email;
     }
 
 }

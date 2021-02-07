@@ -1,5 +1,6 @@
 HELP.md
 .gradle
+.idea
 library-manager-logic/.gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
