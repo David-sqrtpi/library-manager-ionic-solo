@@ -1,9 +1,7 @@
 package com.david.api;
 
 import com.david.entity.Book;
-import com.david.entity.Library;
-import com.david.services.CloudFirestoreBook;
-import com.david.services.CloudFirestoreLibrary;
+import com.david.services.Database;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -18,8 +16,7 @@ public class BookApi {
                           @RequestParam(name = "isbn", defaultValue = "N/A") String isbn){
 
         Book book = new Book(name, author, isbn);
-        CloudFirestoreBook.create(book);
-
+        Database.create(collection, book);
         return book;
 
     }
@@ -27,7 +24,7 @@ public class BookApi {
     @DeleteMapping("/{document}")
     public String get(@PathVariable("document") String document) {
 
-        CloudFirestoreBook.delete(document);
+        Database.delete(collection, document);
 
         return "Deleted";
     }
