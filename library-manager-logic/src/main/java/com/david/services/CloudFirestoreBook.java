@@ -2,12 +2,11 @@ package com.david.services;
 
 import com.david.entity.Book;
 import com.google.api.core.ApiFuture;
-import com.google.cloud.firestore.DocumentReference;
-import com.google.cloud.firestore.DocumentSnapshot;
-import com.google.cloud.firestore.Firestore;
+import com.google.cloud.firestore.*;
 import com.google.firebase.cloud.FirestoreClient;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class CloudFirestoreBook{
@@ -47,10 +46,24 @@ public class CloudFirestoreBook{
     }
 
     public static ArrayList<Book> getAll() {
-        Book book = new Book("hello", "hello", "hello");
         ArrayList<Book> books= new ArrayList<>();
-        books.add(book);
-        return books;
+
+        //asynchronously retrieve all documents
+        ApiFuture<QuerySnapshot> future = db.collection(collection).get();
+        // future.get() blocks on response
+
+        try {
+            List<QueryDocumentSnapshot> documents = future.get().getDocuments();
+            for (QueryDocumentSnapshot document : documents) {
+                books.add(document.toObject(Book.class));
+            }
+            
+            return books;
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
 }
