@@ -4,6 +4,8 @@ import com.david.entity.Book;
 import com.david.services.CloudFirestoreBook;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+
 @RestController
 @RequestMapping("/book")
 @CrossOrigin(origins = "*")
@@ -27,6 +29,12 @@ public class BookApi {
 
     }
 
+    @GetMapping
+    public ArrayList<Book> getAll() {
+
+        return CloudFirestoreBook.getAll();
+        
+    }
     @DeleteMapping("/{document}")
     public String delete(@PathVariable("document") String document) {
 
