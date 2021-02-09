@@ -12,6 +12,13 @@ public class Book {
         this.isbn = isbn;
     }
 
+    public Book() {
+        name = "";
+        author = "";
+        isbn = "";
+    }
+
+
     public String getName() {
         return name;
     }

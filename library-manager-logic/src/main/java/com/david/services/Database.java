@@ -1,23 +1,40 @@
 package com.david.services;
 
+import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.DocumentReference;
+import com.google.cloud.firestore.DocumentSnapshot;
 import com.google.cloud.firestore.Firestore;
 import com.google.firebase.cloud.FirestoreClient;
+
+import java.util.concurrent.ExecutionException;
 
 public interface Database {
 
     Firestore db = FirestoreClient.getFirestore();
 
-    static void create(String collection, Object payload) {
-        DocumentReference docRef = db.collection(collection).document();
-        docRef.set(payload);
-    }
+    static Object get(String collection, String document) {
 
-    void get();
-    void getAll();
-    void update();
-    static void delete(String collection, String document){
-        db.collection(collection).document(document).delete();
-    }
+        DocumentReference docRef = db.collection(collection).document(document);
+
+        ApiFuture<DocumentSnapshot> future = docRef.get();
+
+        DocumentSnapshot documentSnapshot = null;
+        try {
+            documentSnapshot = future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+        Object object = null;
+        if (documentSnapshot.exists()) {
+            // convert document to POJO
+            object = documentSnapshot.toObject(Object.class);
+            System.out.println(object);
+        } else {
+            System.out.println("No such document!");
+        }
+
+        return object;
+
+    };
 
 }

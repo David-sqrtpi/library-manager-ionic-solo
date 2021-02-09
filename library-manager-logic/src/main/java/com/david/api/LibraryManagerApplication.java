@@ -11,6 +11,7 @@ public class LibraryManagerApplication {
 
         CloudFirestoreConfiguration.initializeApp();
         SpringApplication.run(LibraryManagerApplication.class, args);
+
     }
 
 }

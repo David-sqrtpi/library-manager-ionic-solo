@@ -1,30 +1,36 @@
 package com.david.api;
 
 import com.david.entity.Book;
-import com.david.services.Database;
+import com.david.services.CloudFirestoreBook;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/book")
+@CrossOrigin(origins = "*")
 public class BookApi {
 
-    private final String collection = "book";
-
     @PutMapping
-    public Book create(@RequestParam(name = "name", defaultValue = "N/A") String name,
-                          @RequestParam(name = "author", defaultValue = "N/A") String author,
-                          @RequestParam(name = "isbn", defaultValue = "N/A") String isbn){
+    public Book create(@RequestParam(name = "name", defaultValue = "N\\A") String name,
+                          @RequestParam(name = "author", defaultValue = "N\\A") String author,
+                          @RequestParam(name = "isbn", defaultValue = "N\\A") String isbn){
 
         Book book = new Book(name, author, isbn);
-        Database.create(collection, book);
+        CloudFirestoreBook.add(book);
         return book;
 
     }
 
-    @DeleteMapping("/{document}")
-    public String get(@PathVariable("document") String document) {
+    @GetMapping("/{document}")
+    public Book get(@PathVariable("document") String document){
 
-        Database.delete(collection, document);
+        return CloudFirestoreBook.get(document);
+
+    }
+
+    @DeleteMapping("/{document}")
+    public String delete(@PathVariable("document") String document) {
+
+        CloudFirestoreBook.delete(document);
 
         return "Deleted";
     }

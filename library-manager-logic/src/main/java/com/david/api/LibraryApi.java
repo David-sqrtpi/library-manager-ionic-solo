@@ -1,30 +1,36 @@
 package com.david.api;
 
 import com.david.entity.Library;
-import com.david.services.Database;
+import com.david.services.CloudFirestoreLibrary;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/library")
+@CrossOrigin(origins = "*")
 public class LibraryApi {
 
-    private final String collection = "library";
-
     @PutMapping
-    public Library create(@RequestParam(name = "name", defaultValue = "N/A") String name,
-                          @RequestParam(name = "email", defaultValue = "N/A") String email){
+    public Library create(@RequestParam(name = "name", defaultValue = "N\\A") String name,
+                          @RequestParam(name = "email", defaultValue = "N\\A") String email){
 
         Library library = new Library(name, email);
-        Database.create(collection, library);
+        CloudFirestoreLibrary.add(library);
 
         return library;
 
     }
 
-    @DeleteMapping("/{document}")
-    public String get(@PathVariable("document") String document) {
+    @GetMapping("/{document}")
+    public Library get(@PathVariable("document") String document){
 
-        Database.delete(collection, document);
+        return CloudFirestoreLibrary.get(document);
+
+    }
+
+    @DeleteMapping("/{document}")
+    public String delete(@PathVariable("document") String document) {
+
+        CloudFirestoreLibrary.delete(document);
 
         return "Deleted";
     }
