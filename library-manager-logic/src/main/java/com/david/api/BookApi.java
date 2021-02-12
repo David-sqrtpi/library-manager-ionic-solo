@@ -33,14 +33,22 @@ public class BookApi {
     public ArrayList<Book> getAll() {
 
         return CloudFirestoreBook.getAll();
-        
+
     }
+
+
     @DeleteMapping("/{document}")
     public String delete(@PathVariable("document") String document) {
 
         CloudFirestoreBook.delete(document);
 
         return "Deleted";
+    }
+
+    @PatchMapping("/{document}")
+    public String update(@RequestParam(name = "field", defaultValue = "N\\A") String field) {
+        
+        return "Updated";
     }
 
 
