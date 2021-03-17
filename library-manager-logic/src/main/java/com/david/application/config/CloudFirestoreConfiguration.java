@@ -1,16 +1,17 @@
-package com.david.config;
+package com.david.application.config;
 
 import com.google.auth.oauth2.GoogleCredentials;
-import com.google.cloud.firestore.Firestore;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
-import com.google.firebase.cloud.FirestoreClient;
+import org.springframework.context.annotation.Configuration;
 
+import javax.annotation.PostConstruct;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Objects;
 
+@Configuration
 public class CloudFirestoreConfiguration {
 
     private static FileInputStream setServiceAccount(){
@@ -41,6 +42,7 @@ public class CloudFirestoreConfiguration {
 
     }
 
+    @PostConstruct
     public static void initializeApp(){
 
         FirebaseApp.initializeApp(Objects.requireNonNull(setOptions()));

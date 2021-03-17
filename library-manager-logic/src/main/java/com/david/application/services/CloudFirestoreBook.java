@@ -1,6 +1,6 @@
-package com.david.services;
+package com.david.application.services;
 
-import com.david.entity.Book;
+import com.david.application.entity.Book;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
 import com.google.firebase.cloud.FirestoreClient;

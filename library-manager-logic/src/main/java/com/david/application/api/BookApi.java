@@ -1,7 +1,7 @@
-package com.david.api;
+package com.david.application.api;
 
-import com.david.entity.Book;
-import com.david.services.CloudFirestoreBook;
+import com.david.application.entity.Book;
+import com.david.application.services.CloudFirestoreBook;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;

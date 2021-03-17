@@ -1,5 +1,7 @@
-package com.david.entity;
+package com.david.application.services;
 
+import com.david.application.entity.Librarian;
+import com.david.application.entity.User;
 import org.springframework.web.bind.annotation.RequestParam;
 
 public class AdminService {

@@ -1,6 +1,6 @@
-package com.david.services;
+package com.david.application.services;
 
-import com.david.entity.Library;
+import com.david.application.entity.Library;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.DocumentSnapshot;

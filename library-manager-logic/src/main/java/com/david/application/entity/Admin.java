@@ -1,4 +1,4 @@
-package com.david.entity;
+package com.david.application.entity;
 
 public class Admin extends User{
 

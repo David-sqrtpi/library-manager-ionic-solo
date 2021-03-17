@@ -1,7 +1,7 @@
-package com.david.api;
+package com.david.application.api;
 
-import com.david.entity.Library;
-import com.david.services.CloudFirestoreLibrary;
+import com.david.application.entity.Library;
+import com.david.application.services.CloudFirestoreLibrary;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
