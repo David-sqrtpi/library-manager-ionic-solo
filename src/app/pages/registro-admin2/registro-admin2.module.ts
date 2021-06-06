@@ -7,9 +7,6 @@ import { IonicModule } from '@ionic/angular';
 
 import { RegistroAdmin2PageRoutingModule } from './registro-admin2-routing.module';
 
-import { RegistroAdmin2Page } from './registro-admin2.page';
-
-
 @NgModule({
   imports: [
     CommonModule,
@@ -18,6 +15,5 @@ import { RegistroAdmin2Page } from './registro-admin2.page';
     RegistroAdmin2PageRoutingModule,
     HttpClientModule,
   ],
-  declarations: [RegistroAdmin2Page]
 })
 export class RegistroAdmin2PageModule {}

@@ -1,0 +1,41 @@
+<ion-header>
+    <ion-toolbar color="success">
+        <ion-title style="text-align:center;">REGISTRO</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form  [formGroup]='userForm' (ngSubmit)="onSubmit()">
+        <ion-list>
+            <input type="text" [formControlName]='name'>
+            <ion-item>
+                <ion-label stacked>Nombre</ion-label>
+                {{ userForm.get('name').value }}
+            </ion-item>
+
+            <ion-item>
+                <ion-label stacked>Apellido</ion-label>
+                <ion-input type="text" expand="full" ngModel name="apellido"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label stacked>Email</ion-label>
+                <ion-input type="email" expand="full" ngModel name="email"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label stacked>Contraseña</ion-label>
+                <ion-input type="password" ngModel name="password"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label stacked>Edad</ion-label>
+                <ion-input type="number" ngModel name="edad"></ion-input>
+            </ion-item>
+
+            <ion-button expand="full" size="large" color="success" type="submit">
+                REGISTRARSE
+            </ion-button>
+        </ion-list>
+    </form>
+</ion-content>

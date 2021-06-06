@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms'
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -11,11 +15,6 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { firebaseConfig } from 'src/environments/environment';
 
-import { AngularFireModule } from "@angular/fire";
-
-import { AngularFireAuthModule } from "@angular/fire/auth";
-
-import { HttpClientModule } from '@angular/common/http';
  
 
 @NgModule({
@@ -27,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule, 
     AngularFireModule.initializeApp(firebaseConfig), 
     AngularFireAuthModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     StatusBar,
