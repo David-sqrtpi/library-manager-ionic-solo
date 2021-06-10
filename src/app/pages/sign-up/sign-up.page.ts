@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
-
-import { AdminService } from '../../services/admin.service';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-up',
@@ -15,7 +13,7 @@ export class SignUpPage implements OnInit {
   public error: any;
 
   public userForm = this.fb.group({
-    name: ['', Validators.required],
+    name: ['asd', Validators.required],
     lastname: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required]
@@ -23,25 +21,19 @@ export class SignUpPage implements OnInit {
 
 
 
-  constructor(private adminService: AdminService, private fb: FormBuilder) {
-    this.userForm.valueChanges.subscribe(value => console.log(value));
+  constructor(private fb: FormBuilder) {
+    this.userForm.valueChanges.subscribe(()=>console.log("Value changed"));
   }
 
   ngOnInit() {
+    console.log("Somehow");
+    
   }
 
-  onSubmit(data: object) {
+  onSubmit() {
     this.isWaiting = true;
 
-    data["rol"] = "administrador";
-
-    this.adminService.addUser(data).subscribe(
-      result => {
-        console.log(result);
-        this.isWaiting = false;
-      }
-    );
-
-    console.warn(data);
+    console.log("Form")
+    console.log(this.userForm.value)
   }
 }

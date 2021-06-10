@@ -4,13 +4,20 @@
     </ion-toolbar>
 </ion-header>
 
+<form [formGroup]='userForm' (ngSubmit)='onSubmit()'>
+    <input type="text" formControlName='name'> <br>
+    <input type="text" formControlName='lastname'> <br>
+    <input type="text" formControlName='email'> <br>
+    <input type="text" formControlName='password'> <br>
+    <button type="submit">Send</button>
+</form>
+
 <ion-content>
-    <form  [formGroup]='userForm' (ngSubmit)="onSubmit()">
+    <form>
         <ion-list>
-            <input type="text" [formControlName]='name'>
+            <input type="text">
             <ion-item>
                 <ion-label stacked>Nombre</ion-label>
-                {{ userForm.get('name').value }}
             </ion-item>
 
             <ion-item>
@@ -33,7 +40,7 @@
                 <ion-input type="number" ngModel name="edad"></ion-input>
             </ion-item>
 
-            <ion-button expand="full" size="large" color="success" type="submit">
+            <ion-button expand="full" size="large" color="success" type='submit'>
                 REGISTRARSE
             </ion-button>
         </ion-list>

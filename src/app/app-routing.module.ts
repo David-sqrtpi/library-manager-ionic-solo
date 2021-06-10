@@ -24,10 +24,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/tab1/tab1.module').then( m => m.Tab1PageModule)
   },
   {
-    path: 'registro-admin2',
-    loadChildren: () => import('./pages/registro-admin2/registro-admin2.module').then( m => m.RegistroAdmin2PageModule)
-  },
-  {
     path: 'cantidad-de-libros',
     loadChildren: () => import('./pages/cantidad-de-libros/cantidad-de-libros.module').then( m => m.CantidadDeLibrosPageModule)
   },
