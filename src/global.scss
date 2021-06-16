@@ -25,9 +25,15 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
 .icon{
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 50%;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
 }
